@@ -8,9 +8,6 @@ plugins {
 apply from: 'https://raw.githubusercontent.com/JakeWharton/SdkSearch/master/gradle/projectDependencyGraph.gradle'
 
 android {
-    compileSdkVersion 30
-    buildToolsVersion "30.0.3"
-
     defaultConfig {
         applicationId "com.corbellini.superheroapp"
         versionCode 1
