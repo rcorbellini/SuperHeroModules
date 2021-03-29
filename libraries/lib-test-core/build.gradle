@@ -1,0 +1,16 @@
+plugins {
+    id 'java-library'
+    id 'kotlin'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_7
+    targetCompatibility = JavaVersion.VERSION_1_7
+}
+
+dependencies {
+    testImplementation Deps.testlib_kt_junit
+    implementation Deps.lib_kt_reflect
+    implementation Deps.lib_kt_std
+    testImplementation Deps.testlib_junit
+}

@@ -10,3 +10,5 @@ rootProject.name = "SuperHeroApp"
 include ':app'
 include ':features:feature-hero'
 include ':libraries'
+include ':libraries:lib-domain-core'
+include ':libraries:lib-test-core'
