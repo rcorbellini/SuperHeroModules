@@ -11,6 +11,7 @@ import org.mockito.Mock
 import org.mockito.MockitoAnnotations
 import org.mockito.kotlin.any
 import org.mockito.kotlin.whenever
+import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 
 class GetByIdUseCaseTest {
@@ -21,7 +22,7 @@ class GetByIdUseCaseTest {
 
     @Before
     fun `GetById before tests`(){
-        MockitoAnnotations.openMocks(this)
+        MockitoAnnotations.initMocks(this)
         getByIdUseCaseImp = GetByIdUseCaseImp(service)
     }
 
@@ -31,17 +32,29 @@ class GetByIdUseCaseTest {
     fun `GetById must return a hero`() = runBlockingTest {
         //arrange
         val hero = makeRandomInstance<Hero>()
-        println(hero)
-        val expect = Result.success(hero)
         val (id) = hero
-        whenever(service.getById(any())).thenReturn(expect)
+        whenever(service.getById(any())).thenReturn(hero)
 
         //act
         val result = getByIdUseCaseImp.execute(id)
 
         //assert
-        assertTrue {
-            result.isSuccess && expect == result
-        }
+        assertEquals(Result.success(hero), result)
+    }
+
+    @ExperimentalCoroutinesApi
+    @ExperimentalStdlibApi
+    @Test
+    fun `GetById must return a failure, when exception`() = runBlockingTest {
+        //arrange
+        val hero = makeRandomInstance<Hero>()
+        val (id) = hero
+        whenever(service.getById(any())).thenThrow(RuntimeException())
+
+        //act
+        val result = getByIdUseCaseImp.execute(id)
+
+        //assert
+        assertTrue { result.isFailure && result.exceptionOrNull() is java.lang.RuntimeException}
     }
 }

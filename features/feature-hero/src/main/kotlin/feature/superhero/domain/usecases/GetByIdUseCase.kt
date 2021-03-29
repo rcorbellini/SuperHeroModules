@@ -1,8 +1,18 @@
 package feature.superhero.domain.usecases
 
 import feature.superhero.domain.models.Hero
+import feature.superhero.domain.repositories.HeroRepository
 
-internal abstract class GetByIdUseCase {
-    abstract suspend fun execute(id : Int): Result<Hero>
+internal interface GetByIdUseCase {
+    suspend fun execute(id: String): Result<Hero>
 }
 
+class GetByIdUseCaseImp(private val repository: HeroRepository) : GetByIdUseCase {
+
+    override suspend fun execute(id: String) = try {
+        Result.success(repository.getById(id))
+    } catch (exception: Exception) {
+        //todo Melhorar tratamento da exception
+        Result.failure(exception)
+    }
+}
