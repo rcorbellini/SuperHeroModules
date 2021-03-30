@@ -3,6 +3,7 @@ apply plugin: 'kotlin-android'
 
 dependencies {
     implementation project(':libraries:lib-test-core')
+    implementation project(':libraries:lib-domain-core')
 
     testImplementation Deps.testlib_mockito
     testImplementation Deps.testlib_coroutines

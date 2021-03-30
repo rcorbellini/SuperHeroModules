@@ -20,7 +20,7 @@ class GetByIdUseCaseTest {
     private lateinit var getByIdUseCaseImp: GetByIdUseCaseImp
 
     @Before
-    fun `GetById before tests`(){
+    fun `GetById before each`(){
         MockitoAnnotations.initMocks(this)
         getByIdUseCaseImp = GetByIdUseCaseImp(service)
     }
