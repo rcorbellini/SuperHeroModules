@@ -32,11 +32,11 @@ class GetByIdUseCaseTest {
     fun `GetById must return a success hero`() = runBlockingTest {
         //arrange
         val hero = makeRandomInstance<Hero>()
-        val (id) = hero
-        whenever(service.getById(any())).thenReturn(hero)
+        val (idHero) = hero
+        whenever(service.getById(idHero)).thenReturn(hero)
 
         //act
-        val result = getByIdUseCaseImp.execute(id)
+        val result = getByIdUseCaseImp.execute(idHero)
 
         //assert
         assertEquals(Result.success(hero), result)
@@ -48,11 +48,11 @@ class GetByIdUseCaseTest {
     fun `GetById must return a failure, when exception`() = runBlockingTest {
         //arrange
         val hero = makeRandomInstance<Hero>()
-        val (id) = hero
-        whenever(service.getById(any())).thenThrow(RuntimeException())
+        val (idHero) = hero
+        whenever(service.getById(idHero)).thenThrow(RuntimeException())
 
         //act
-        val result = getByIdUseCaseImp.execute(id)
+        val result = getByIdUseCaseImp.execute(idHero)
 
         //assert
         assertTrue { result.isFailure && result.exceptionOrNull() is java.lang.RuntimeException}
