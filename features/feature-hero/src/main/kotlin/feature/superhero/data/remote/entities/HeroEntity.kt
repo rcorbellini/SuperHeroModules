@@ -1,4 +1,4 @@
-package feature.superhero.data.entities
+package feature.superhero.data.remote.entities
 
 import feature.superhero.domain.models.Hero
 
