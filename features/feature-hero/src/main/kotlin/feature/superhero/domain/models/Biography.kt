@@ -1,7 +1,6 @@
 package feature.superhero.domain.models
 
 data class Biography (
-
 	val fullName : String,
 	val alterEgos : String,
 	val aliases : List<String>,
