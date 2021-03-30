@@ -29,7 +29,7 @@ class GetByIdUseCaseTest {
     @ExperimentalCoroutinesApi
     @ExperimentalStdlibApi
     @Test
-    fun `GetById must return a hero`() = runBlockingTest {
+    fun `GetById must return a success hero`() = runBlockingTest {
         //arrange
         val hero = makeRandomInstance<Hero>()
         val (id) = hero
