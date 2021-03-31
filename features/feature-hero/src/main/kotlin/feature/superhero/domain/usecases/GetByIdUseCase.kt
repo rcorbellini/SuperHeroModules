@@ -2,22 +2,16 @@ package feature.superhero.domain.usecases
 
 import feature.superhero.domain.models.Hero
 import feature.superhero.domain.repositories.HeroRepository
-import library.domain.core.remote.RemoteApiExceptions
+import kotlinx.coroutines.flow.Flow
 
-internal interface GetByIdUseCase {
-    suspend fun execute(id: Int): Result<Hero>
+interface GetByIdUseCase {
+    suspend fun execute(params: ParamGetById): Flow<Result<Hero>>
 }
 
 class GetByIdUseCaseImp(private val repository: HeroRepository) : GetByIdUseCase {
-
-    override suspend fun execute(id: Int) : Result<Hero> {
-        try {
-           return  Result.success(repository.getById(id))
-        } catch (exception: Exception) {
-            if(exception is RemoteApiExceptions){
-                return Result.failure(exception)
-            }
-            return Result.failure(exception)
-        }
-    }
+    override suspend fun execute(params: ParamGetById) = repository.getById(id = params.id)
 }
+
+class ParamGetById(
+    val id: Int
+)

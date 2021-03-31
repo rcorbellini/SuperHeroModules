@@ -14,6 +14,7 @@ object Versions {
     val androidx_recyclerview = "1.1.0"
     val androidx_navigation = "2.3.4"
     val androidx_constraintLayout = "2.0.4"
+    val androidx_life_cycle = "2.3.0"
     val material = "1.3.0"
     // </editor-fold>
 
@@ -23,7 +24,7 @@ object Versions {
     val mockito = "2.2.11"
     val androidx_espresso = "3.3.0"
     val androidx_testing = "1.3.0"
-    val kt_coroutines_test = "1.4.3"
+    val kt_coroutines = "1.4.3"
     val jupter = "5.6.2"
     //</editor-fold>
 
@@ -41,6 +42,7 @@ object Deps {
 
     val lib_kt_reflect          = "org.jetbrains.kotlin:kotlin-reflect:${Versions.kotlin}"
     val lib_kt_std              = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.kotlin}"
+    val lib_kt_coroutines       = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.kt_coroutines}"
 
     // <editor-fold desc="AndroidX">
     val androidx_core                    = "androidx.core:core-ktx:${Versions.androidx_core}"
@@ -49,6 +51,8 @@ object Deps {
     val androidx_navigation_fragment     = "androidx.navigation:navigation-fragment-ktx:${Versions.androidx_navigation}"
     val androidx_navigation_ui           = "androidx.navigation:navigation-ui-ktx:${Versions.androidx_navigation}"
     val androidx_recyclerview            = "androidx.recyclerview:recyclerview:${Versions.androidx_recyclerview}"
+    val androidx_lf_viewmodel            = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.androidx_life_cycle}"
+    val androidx_lf_livedata            = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.androidx_life_cycle}"
     // </editor-fold>
 
 
@@ -61,7 +65,7 @@ object Deps {
     val testlib_mockito             = "org.mockito.kotlin:mockito-kotlin:${Versions.mockito}"
     val testlib_kt_junit            = "org.jetbrains.kotlin:kotlin-test-junit5"
     val testlib_kt_test            =  "org.jetbrains.kotlin:kotlin-test-common:${Versions.kotlin}"
-    val testlib_coroutines          = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.kt_coroutines_test}"
+    val testlib_coroutines          = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.kt_coroutines}"
     val testlib_jupter              = "org.junit.jupiter:junit-jupiter-api:${Versions.jupter}"
     //</editor-fold>
 

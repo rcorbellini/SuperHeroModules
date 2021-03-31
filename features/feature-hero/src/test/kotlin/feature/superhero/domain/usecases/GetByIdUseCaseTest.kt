@@ -3,7 +3,10 @@ package feature.superhero.domain.usecases
 import feature.superhero.domain.models.Hero
 import feature.superhero.domain.repositories.HeroRepository
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.test.runBlockingTest
+import library.domain.core.exceptions.RemoteApiExceptions
 import library.test.core.makeRandomInstance
 import org.junit.Before
 import org.junit.Test
@@ -31,14 +34,16 @@ class GetByIdUseCaseTest {
     fun `GetById must return a success hero`() = runBlockingTest {
         //arrange
         val hero = makeRandomInstance<Hero>()
-        val (idHero) = hero
-        whenever(service.getById(idHero)).thenReturn(hero)
+        val (id) = hero
+        whenever(service.getById(id)).thenReturn(flow{emit(Result.success(hero))})
 
         //act
-        val result = getByIdUseCaseImp.execute(idHero)
+        getByIdUseCaseImp.execute(params = ParamGetById(id)).collect { result ->
 
-        //assert
-        assertEquals(Result.success(hero), result)
+            //assert
+            assertEquals(Result.success(hero), result)
+        }
+
     }
 
     @ExperimentalCoroutinesApi
@@ -47,13 +52,16 @@ class GetByIdUseCaseTest {
     fun `GetById must return a failure, when exception`() = runBlockingTest {
         //arrange
         val hero = makeRandomInstance<Hero>()
-        val (idHero) = hero
-        whenever(service.getById(idHero)).thenThrow(RuntimeException())
+        val (id) = hero
+        whenever(service.getById(id)).thenReturn(flow<Result<Hero>>{ emit(Result.failure(
+            RemoteApiExceptions()
+        ))})
 
         //act
-        val result = getByIdUseCaseImp.execute(idHero)
+        getByIdUseCaseImp.execute(params = ParamGetById(id)).collect { result ->
+            //assert
+            assertTrue(result.isFailure && result.exceptionOrNull() is RemoteApiExceptions)
+        }
 
-        //assert
-        assertTrue { result.isFailure && result.exceptionOrNull() is java.lang.RuntimeException}
     }
 }

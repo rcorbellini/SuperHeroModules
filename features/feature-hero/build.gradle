@@ -5,6 +5,10 @@ dependencies {
     implementation project(':libraries:lib-test-core')
     implementation project(':libraries:lib-domain-core')
 
+    implementation Deps.lib_kt_coroutines
+    implementation Deps.androidx_lf_viewmodel
+    implementation Deps.androidx_lf_livedata
+
     testImplementation Deps.testlib_mockito
     testImplementation Deps.testlib_coroutines
     testImplementation Deps.testlib_junit
