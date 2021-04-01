@@ -3,9 +3,11 @@ package feature.superhero.domain.usecases
 import feature.superhero.domain.models.Hero
 import feature.superhero.domain.repositories.HeroRepository
 import kotlinx.coroutines.flow.Flow
+import library.domain.core.usecases.UseCase
+import library.domain.core.usecases.UseCaseParam
 
-interface GetByIdUseCase {
-    suspend fun execute(params: ParamGetById): Flow<Result<Hero>>
+interface GetByIdUseCase : UseCase<Hero, ParamGetById> {
+    override suspend fun execute(params: ParamGetById): Flow<Result<Hero>>
 }
 
 class GetByIdUseCaseImp(private val repository: HeroRepository) : GetByIdUseCase {
@@ -14,4 +16,4 @@ class GetByIdUseCaseImp(private val repository: HeroRepository) : GetByIdUseCase
 
 class ParamGetById(
     val id: Int
-)
+) : UseCaseParam()

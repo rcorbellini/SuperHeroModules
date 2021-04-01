@@ -3,13 +3,14 @@ package feature.superhero.domain.usecases
 import feature.superhero.domain.models.Hero
 import feature.superhero.domain.repositories.HeroRepository
 import kotlinx.coroutines.flow.Flow
+import library.domain.core.usecases.UseCase
+import library.domain.core.usecases.UseCaseParam
 
-interface LoadAllPagedUseCase {
-    suspend fun execute(params: LoadAllParams = LoadAllParams()): Flow<Result<List<Hero>>>
+interface LoadAllPagedUseCase : UseCase<List<Hero>, LoadAllParams> {
+    override suspend fun execute(params: LoadAllParams): Flow<Result<List<Hero>>>
 }
 
 class LoadAllPagedUseCaseImp(private val repository: HeroRepository) : LoadAllPagedUseCase {
-
     override suspend fun execute(params: LoadAllParams) =
         repository.loadAllPaged(offset = params.offset, limit = params.limit)
 }
@@ -17,4 +18,4 @@ class LoadAllPagedUseCaseImp(private val repository: HeroRepository) : LoadAllPa
 data class LoadAllParams(
     val offset: Int = 0,
     val limit: Int = 20
-)
+) : UseCaseParam()

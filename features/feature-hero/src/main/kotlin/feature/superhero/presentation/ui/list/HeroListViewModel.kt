@@ -23,7 +23,18 @@ class HeroListViewModel(
         onInit()
     }
 
-    fun loadMore() {
+    fun handleEvents(heroListEvent: HeroListEvent){
+        when(heroListEvent){
+            is HeroListEvent.LoadMore -> loadMore()
+            is HeroListEvent.Search -> search(heroListEvent.query)
+        }
+    }
+
+    private fun search(query: String){
+        throw  NotImplementedError()
+    }
+
+    private fun loadMore() {
         viewModelScope.launch {
             val offset = _listState.value?.listHero?.size ?: 0
             loadAllPagedUseCase.execute(LoadAllParams(offset = offset))
