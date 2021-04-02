@@ -10,12 +10,14 @@ buildscript {
         classpath Deps.tools_gradleandroid
         classpath Deps.tools_kotlin
         classpath Deps.tools_gradleversions
+        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.30'
     }
 }
 
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
 
 subprojects {
     afterEvaluate { project ->
@@ -38,8 +40,16 @@ subprojects {
                     targetCompatibility Config.javaVersion
                 }
 
+                kotlinOptions {
+                    jvmTarget = Config.javaVersion.toString()
+                }
+
                 lintOptions {
                     abortOnError false
+                }
+
+                buildFeatures {
+                    dataBinding true
                 }
             }
         }

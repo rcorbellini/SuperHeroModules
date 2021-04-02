@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.20104166666666667" />
+        <entry key="features/feature-hero/src/main/res/layout/activity_hero_list.xml" value="0.25" />
+        <entry key="features/feature-hero/src/main/res/layout/hero_list.xml" value="0.20208333333333334" />
+        <entry key="features/feature-hero/src/main/res/layout/item_hero.xml" value="0.20208333333333334" />
+      </map>
+    </option>
+  </component>
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_7" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />

@@ -1,5 +1,6 @@
 package feature.superhero.presentation.ui.list
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -19,14 +20,18 @@ class HeroListViewModel(
 
     private val _listState = MutableLiveData<HeroListState>()
 
+    val listState : LiveData<HeroListState>
+            get() = _listState
+
     init {
         onInit()
     }
 
-    fun handleEvents(heroListEvent: HeroListEvent){
+    fun dispatchEvent(heroListEvent: HeroListEvent){
         when(heroListEvent){
             is HeroListEvent.LoadMore -> loadMore()
             is HeroListEvent.Search -> search(heroListEvent.query)
+            else -> {}
         }
     }
 

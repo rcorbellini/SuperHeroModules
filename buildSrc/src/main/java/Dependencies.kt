@@ -11,12 +11,15 @@ object Config {
 object Versions {
     // <editor-fold desc="google">
     val androidx_core = "1.6.0-alpha01"
+    val androidx_appcompat = "1.2.0"
     val androidx_recyclerview = "1.1.0"
     val androidx_navigation = "2.3.4"
     val androidx_constraintLayout = "2.0.4"
     val androidx_life_cycle = "2.3.0"
     val material = "1.3.0"
     // </editor-fold>
+
+    val koin = "2.2.2"
 
     // <editor-fold desc="testing">
     val junit = "4.13.2"
@@ -44,6 +47,7 @@ object Deps {
     val lib_kt_std              = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.kotlin}"
     val lib_kt_coroutines       = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.kt_coroutines}"
 
+
     // <editor-fold desc="AndroidX">
     val androidx_core                    = "androidx.core:core-ktx:${Versions.androidx_core}"
     val androidx_constraintlayout        = "androidx.constraintlayout:constraintlayout:${Versions.androidx_constraintLayout}"
@@ -51,9 +55,20 @@ object Deps {
     val androidx_navigation_fragment     = "androidx.navigation:navigation-fragment-ktx:${Versions.androidx_navigation}"
     val androidx_navigation_ui           = "androidx.navigation:navigation-ui-ktx:${Versions.androidx_navigation}"
     val androidx_recyclerview            = "androidx.recyclerview:recyclerview:${Versions.androidx_recyclerview}"
+    val androidx_appcompat               = "androidx.appcompat:appcompat:${Versions.androidx_appcompat}"
     val androidx_lf_viewmodel            = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.androidx_life_cycle}"
-    val androidx_lf_livedata            = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.androidx_life_cycle}"
+    val androidx_lf_livedata             = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.androidx_life_cycle}"
     // </editor-fold>
+
+    //Region Android
+    //easy recyclerview -> adapter/viewholder
+    val kiel                             = "me.ibrahimyilmaz:kiel:1.2.1"
+    val koin                             =  "org.koin:koin-core:${Versions.koin}n"
+    val koinAndroid                      =  "org.koin:koin-android:${Versions.koin}"
+    val koinLifeCycleScope               =  "org.koin:koin-android-scope:${Versions.koin}"
+    val koinAndroidViewModel             =  "org.koin:koin-androidx-viewmodel:${Versions.koin}"
+    val koinTest                         =  "org.koin:koin-test:${Versions.koin}"
+    //Endregion
 
 
     // <editor-fold desc="testing">
