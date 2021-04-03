@@ -81,6 +81,7 @@ internal fun provideRetrofit(okHttpClient: OkHttpClient, url: String): Retrofit 
 internal fun provideHeroService(retrofit: Retrofit): HeroService =
     retrofit.create(HeroService::class.java)
 
+//todo move to DATA-core lib
 internal class EmptyToNullTypeAdapter : TypeAdapter<Int>() {
     override fun write(out: JsonWriter, value: Int?) {
         TypeAdapters.INTEGER.write(out, value)
