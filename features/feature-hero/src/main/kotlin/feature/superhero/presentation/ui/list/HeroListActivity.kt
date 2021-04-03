@@ -9,11 +9,12 @@ import com.corbellini.hero_detail.R
 import com.corbellini.hero_detail.databinding.ActivityHeroListBinding
 import feature.superhero.presentation.models.HeroPresentation
 import library.presentation.core.show
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HeroListActivity : AppCompatActivity() {
     // region Members
 
-    private lateinit var heroListViewModel : HeroListViewModel // by viewModel<HeroListViewModel>()
+    private val heroListViewModel by viewModel<HeroListViewModel>()
 
     private lateinit var binding: ActivityHeroListBinding
 

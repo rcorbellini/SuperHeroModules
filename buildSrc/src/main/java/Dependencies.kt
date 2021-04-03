@@ -20,6 +20,9 @@ object Versions {
     // </editor-fold>
 
     val koin = "2.2.2"
+    val log_interceptor = "4.2.1"
+
+    val retrofit = "2.9.0"
 
     // <editor-fold desc="testing">
     val junit = "4.13.2"
@@ -70,6 +73,11 @@ object Deps {
     val koinTest                         =  "org.koin:koin-test:${Versions.koin}"
     //Endregion
 
+    //retrofit
+    val logginInterceptor                = "com.squareup.okhttp3:logging-interceptor:${Versions.log_interceptor}"
+    val retrofit                         = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
+    val retrofit_gson                    = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
+
 
     // <editor-fold desc="testing">
     val testlib_junit               = "junit:junit:${Versions.junit}"
@@ -79,7 +87,7 @@ object Deps {
     val testandroidx_espressocore   = "androidx.test.espresso:espresso-core:${Versions.androidx_espresso}"
     val testlib_mockito             = "org.mockito.kotlin:mockito-kotlin:${Versions.mockito}"
     val testlib_kt_junit            = "org.jetbrains.kotlin:kotlin-test-junit5"
-    val testlib_kt_test            =  "org.jetbrains.kotlin:kotlin-test-common:${Versions.kotlin}"
+    val testlib_kt_test             = "org.jetbrains.kotlin:kotlin-test-common:${Versions.kotlin}"
     val testlib_coroutines          = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.kt_coroutines}"
     val testlib_jupter              = "org.junit.jupiter:junit-jupiter-api:${Versions.jupter}"
     //</editor-fold>

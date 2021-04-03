@@ -6,8 +6,8 @@ import kotlinx.coroutines.flow.Flow
 import library.domain.core.usecases.UseCase
 import library.domain.core.usecases.UseCaseParam
 
-interface LoadAllPagedUseCase : UseCase<List<Hero>, LoadAllParams> {
-    override suspend fun execute(params: LoadAllParams): Flow<Result<List<Hero>>>
+interface LoadAllPagedUseCase : UseCase<Hero, LoadAllParams> {
+    override suspend fun execute(params: LoadAllParams): Flow<Result<Hero>>
 }
 
 class LoadAllPagedUseCaseImp(private val repository: HeroRepository) : LoadAllPagedUseCase {

@@ -6,5 +6,5 @@ import kotlinx.coroutines.flow.Flow
 interface HeroRepository {
     suspend fun getById(id: Int): Flow<Result<Hero>>
 
-    suspend fun loadAllPaged(offset: Int, limit: Int): Flow<Result<List<Hero>>>
+    suspend fun loadAllPaged(offset: Int, limit: Int): Flow<Result<Hero>>
 }

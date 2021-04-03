@@ -8,11 +8,18 @@ dependencies {
 
     implementation Deps.koinAndroid
     implementation Deps.koinAndroidViewModel
+
     implementation Deps.lib_kt_coroutines
+
+    implementation Deps.kiel
+
+    implementation Deps.retrofit
+    implementation Deps.retrofit_gson
+    implementation Deps.logginInterceptor
+
     implementation Deps.androidx_lf_viewmodel
     implementation Deps.androidx_lf_livedata
     implementation Deps.androidx_appcompat
-    implementation Deps.kiel
     implementation Deps.androidx_material
 
     testImplementation Deps.testlib_mockito

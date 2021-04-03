@@ -18,16 +18,17 @@ class HeroRepositoryImp(private val heroService: HeroService) : HeroRepository {
         }
 
     override suspend fun loadAllPaged(offset: Int, limit: Int) =
-        flow<Result<List<Hero>>> {
+        flow<Result<Hero>> {
             try {
                 val limitOffset = offset + limit
                 val range = (offset..limitOffset).toList()
 
-                emit(Result.success(range.map {
-                    heroService.getById(it).toModel()
-                }))
+               range.map {
+                    emit(  Result.success(heroService.getById(it).toModel()))
+                }
             } catch (e: Exception) {
                 //TODO make a better error handler (by instance type)
+                    e.printStackTrace()
                 emit(Result.failure(RemoteApiExceptions()))
             }
         }

@@ -31,7 +31,6 @@ class HeroListViewModel(
         when(heroListEvent){
             is HeroListEvent.LoadMore -> loadMore()
             is HeroListEvent.Search -> search(heroListEvent.query)
-            else -> {}
         }
     }
 
@@ -42,7 +41,7 @@ class HeroListViewModel(
     private fun loadMore() {
         viewModelScope.launch {
             val offset = _listState.value?.listHero?.size ?: 0
-            loadAllPagedUseCase.execute(LoadAllParams(offset = offset))
+            loadAllPagedUseCase.execute(LoadAllParams(offset = offset+1))
                 .onStart {
                     onLoading(true)
                 }
@@ -63,9 +62,9 @@ class HeroListViewModel(
         _listState.value = _listState.value?.copy(complete = boolean)
     }
 
-    private fun onSuccessLoadAll(list: List<Hero>) {
+    private fun onSuccessLoadAll(hero: Hero) {
         val oldList: List<HeroPresentation> = _listState.value?.listHero ?: emptyList()
-        val newList: List<HeroPresentation> = list.map { it.toPresentation() }
+        val newList: List<HeroPresentation> = listOf(hero.toPresentation())
         val currentList = oldList + newList
         _listState.value = _listState.value?.copy(listHero = currentList)
     }
