@@ -66,7 +66,7 @@ object Deps {
     //Region Android
     //easy recyclerview -> adapter/viewholder
     val kiel                             = "me.ibrahimyilmaz:kiel:1.2.1"
-    val koin                             =  "org.koin:koin-core:${Versions.koin}n"
+    val koin                             =  "org.koin:koin-core:${Versions.koin}"
     val koinAndroid                      =  "org.koin:koin-android:${Versions.koin}"
     val koinLifeCycleScope               =  "org.koin:koin-android-scope:${Versions.koin}"
     val koinAndroidViewModel             =  "org.koin:koin-androidx-viewmodel:${Versions.koin}"

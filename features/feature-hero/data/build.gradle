@@ -1,0 +1,22 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+
+dependencies {
+    testImplementation project(':libraries:lib-test-core')
+    implementation project(':features:feature-hero:domain')
+    implementation project(':libraries:lib-domain-core')
+
+    implementation Deps.lib_kt_coroutines
+
+    implementation Deps.retrofit
+    implementation Deps.retrofit_gson
+    implementation Deps.logginInterceptor
+
+    implementation Deps.koin
+
+
+    testImplementation Deps.testlib_mockito
+    testImplementation Deps.testlib_coroutines
+    testImplementation Deps.testlib_junit
+    testImplementation Deps.testlib_kt_junit
+}

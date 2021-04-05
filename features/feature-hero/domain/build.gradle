@@ -1,0 +1,17 @@
+plugins {
+    id 'java-library'
+    id 'kotlin'
+}
+
+dependencies {
+    implementation project(':libraries:lib-domain-core')
+
+    implementation Deps.koin
+    implementation Deps.lib_kt_coroutines
+
+    testImplementation project(':libraries:lib-test-core')
+    testImplementation Deps.testlib_mockito
+    testImplementation Deps.testlib_coroutines
+    testImplementation Deps.testlib_junit
+    testImplementation Deps.testlib_kt_junit
+}

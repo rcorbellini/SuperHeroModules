@@ -24,8 +24,11 @@ android {
 dependencies {
 
     //Local Libs
-    implementation project(':features:feature-hero')
+    implementation project(':features:feature-hero:data')
+    implementation project(':features:feature-hero:domain')
+    implementation project(':features:feature-hero:presentation')
 
+    implementation Deps.androidx_material
     implementation Deps.koinAndroid
 }
 

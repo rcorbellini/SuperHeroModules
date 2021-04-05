@@ -1,8 +1,8 @@
 package com.corbellini.superheroapp
 
 import android.app.Application
-import feature.superhero.di.heroDomain
-import feature.superhero.di.heroPresentation
+import feature.superhero.domain.heroDomain
+import feature.superhero.presentation.heroPresentation
 import feature.superhero.di.heroRemoteModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin

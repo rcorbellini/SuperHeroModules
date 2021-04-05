@@ -4,6 +4,8 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.20104166666666667" />
+        <entry key="features/feature-hero/presentation/src/main/res/layout/activity_hero_list.xml" value="0.20208333333333334" />
+        <entry key="features/feature-hero/presentation/src/main/res/layout/item_hero.xml" value="0.20208333333333334" />
         <entry key="features/feature-hero/src/main/res/layout/activity_hero_list.xml" value="0.25" />
         <entry key="features/feature-hero/src/main/res/layout/hero_list.xml" value="0.20208333333333334" />
         <entry key="features/feature-hero/src/main/res/layout/item_hero.xml" value="0.20208333333333334" />

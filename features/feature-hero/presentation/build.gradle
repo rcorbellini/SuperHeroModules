@@ -1,0 +1,35 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+
+dependencies {
+    implementation project(':libraries:lib-presentation-core')
+    implementation project(':libraries:lib-domain-core')
+    implementation project(':features:feature-hero:domain')
+    testImplementation project(':libraries:lib-test-core')
+
+
+    implementation Deps.koinAndroid
+    implementation Deps.koinAndroidViewModel
+
+    implementation Deps.lib_kt_coroutines
+
+    implementation Deps.kiel
+
+    implementation Deps.androidx_lf_viewmodel
+    implementation Deps.androidx_lf_livedata
+    implementation Deps.androidx_appcompat
+    implementation Deps.androidx_material
+
+    testImplementation Deps.testlib_mockito
+    testImplementation Deps.testlib_coroutines
+    testImplementation Deps.testlib_junit
+    testImplementation Deps.testlib_kt_junit
+}
+
+
+
+android {
+    buildFeatures {
+        dataBinding true
+    }
+}
