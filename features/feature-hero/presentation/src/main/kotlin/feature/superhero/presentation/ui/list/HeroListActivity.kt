@@ -1,13 +1,17 @@
 package feature.superhero.presentation.ui.list
 
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.Observer
+import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.RecyclerView
 import com.corbellini.presentation.R
 import com.corbellini.presentation.databinding.ActivityHeroListBinding
+import com.google.android.material.snackbar.Snackbar
 import feature.superhero.presentation.models.HeroPresentation
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
+import library.presentation.core.bindScrollListener
 import library.presentation.core.show
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -18,9 +22,17 @@ class HeroListActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityHeroListBinding
 
-
     private val favoritesAdapter = createHeoresAdapter {
         //todo, on click
+    }
+
+    private val onScrollHitBottomLoadMore = object : RecyclerView.OnScrollListener() {
+        override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+            super.onScrollStateChanged(recyclerView, newState)
+            if (!recyclerView.canScrollVertically(1) && newState == RecyclerView.SCROLL_STATE_IDLE) {
+                loadMore()
+            }
+        }
     }
 
     // endregion
@@ -35,12 +47,14 @@ class HeroListActivity : AppCompatActivity() {
 
         handleTextChanges()
 
+        loadMore()
+    }
+
+    private fun loadMore() {
         heroListViewModel.dispatchEvent(HeroListEvent.LoadMore)
     }
 
-
     // endregion
-
 
     // region Private API
 
@@ -56,13 +70,15 @@ class HeroListActivity : AppCompatActivity() {
     }
 
     private fun observeHeroListState() {
-        heroListViewModel.listState.observe(this, Observer { state ->
-            handleLoading(state)
+        lifecycleScope.launch {
+            heroListViewModel.listState.collect { state ->
+                handleLoading(state)
 
-            handleContent(state)
+                handleContent(state)
 
-            handleError(state)
-        })
+                handleError(state)
+            }
+        }
     }
 
     private fun handleError(state: HeroListState) {
@@ -72,12 +88,17 @@ class HeroListActivity : AppCompatActivity() {
         }
     }
 
-    private fun handleLoading(state: HeroListState){
+    private fun handleLoading(state: HeroListState) {
         //binding.loading.show()
     }
-    private fun handleContent(state: HeroListState){
+
+    private fun handleContent(state: HeroListState) {
         state.listHero.let { listHeroes ->
             if (listHeroes.isNotEmpty()) {
+                binding.listHeroRecyclerView.bindScrollListener(
+                    state.complete,
+                    onScrollHitBottomLoadMore
+                )
                 handleListHeroes(listHeroes)
             } else {
                 handleNoListHero()
@@ -89,22 +110,17 @@ class HeroListActivity : AppCompatActivity() {
         //binding.noDataFoundTextView.hide()
         binding.listHeroRecyclerView.show()
         binding.listHeroRecyclerView.apply {
-            adapter = favoritesAdapter.apply {
-                submitList(favorites)
-            }
+            //to avoid 'blink' and scroll to the top
+            adapter ?: run { adapter = favoritesAdapter }
+            favoritesAdapter.submitList(favorites)
         }
     }
 
-
-    private fun handleNoListHero(){
+    private fun handleNoListHero() {
         //binding.noDataFoundTextView.show()
     }
 
-
-
     // endregion
-    companion object{
-       val TRESHOLD = 2
-    }
 }
+
 

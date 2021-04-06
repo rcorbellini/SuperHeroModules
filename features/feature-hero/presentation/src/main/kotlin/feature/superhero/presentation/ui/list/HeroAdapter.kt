@@ -20,8 +20,10 @@ internal class HeroViewHolder(
 internal inline fun createHeoresAdapter( onClick: (HeroPresentation) -> Unit) =
     adapterOf<HeroPresentation> {
         diff(
-            areItemsTheSame = { old, new -> old === new },
-            areContentsTheSame = { old, new -> old === new}
+            areItemsTheSame = { old, new ->
+                old == new },
+            areContentsTheSame = { old, new ->
+                old.name == new.name}
         )
         register(
             layoutResource = R.layout.item_hero,
