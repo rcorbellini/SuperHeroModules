@@ -41,14 +41,11 @@ class HeroListViewModel(
         job?.cancel()
         job = viewModelScope.launch {
             val offset = _listState.value.listHero.size
-            println(" CHAMOU LOAD MORE >>>> ${offset+1}")
             loadAllPagedUseCase.execute(LoadAllParams(offset = offset+1, limit = 20))
                 .onStart {
-                    println(">>>iniciou")
                     onLoading(true)
                 }
                 .onCompletion {
-                    println(">>>terminou")
                     onLoading(false)
                 }
                 .collect { result ->

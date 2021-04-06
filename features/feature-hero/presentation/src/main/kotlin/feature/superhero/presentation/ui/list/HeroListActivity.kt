@@ -30,7 +30,7 @@ class HeroListActivity : AppCompatActivity() {
         override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
             super.onScrollStateChanged(recyclerView, newState)
             if (!recyclerView.canScrollVertically(1) && newState == RecyclerView.SCROLL_STATE_IDLE) {
-                loadMore()
+                dispatchLoadMore()
             }
         }
     }
@@ -47,16 +47,14 @@ class HeroListActivity : AppCompatActivity() {
 
         handleTextChanges()
 
-        loadMore()
+        dispatchLoadMore()
     }
-
-    private fun loadMore() {
-        heroListViewModel.dispatchEvent(HeroListEvent.LoadMore)
-    }
-
     // endregion
 
     // region Private API
+    private fun dispatchLoadMore() {
+        heroListViewModel.dispatchEvent(HeroListEvent.LoadMore)
+    }
 
     private fun handleTextChanges() {
         /*binding.searchEditText.doOnTextChanged { text, _, _, _ ->
