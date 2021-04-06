@@ -27,7 +27,7 @@ val heroRemoteModule = module {
     single {
         provideRetrofit(
             okHttpClient = get(),
-            url = "https://www.superheroapi.com/api.php/4006935012700536/"
+            url = "https://www.superheroapi.com/api.php//"
         )
     }
 
