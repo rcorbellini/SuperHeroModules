@@ -1,10 +1,13 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
+apply plugin: "kotlin-kapt"
 
 dependencies {
-    testImplementation project(':libraries:lib-test-core')
     implementation project(':features:feature-hero:domain')
     implementation project(':libraries:lib-domain-core')
+    implementation project(':libraries:lib-data-core')
+
+    testImplementation project(':libraries:lib-test-core')
 
     implementation Deps.lib_kt_coroutines
 
@@ -13,6 +16,11 @@ dependencies {
     implementation Deps.logginInterceptor
 
     implementation Deps.koin
+    implementation Deps.koinAndroid
+
+    implementation Deps.androidx_room
+    implementation Deps.androidx_roomktx
+    kapt Deps.androidx_room_compiler
 
 
     testImplementation Deps.testlib_mockito

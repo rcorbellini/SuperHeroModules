@@ -60,7 +60,7 @@ class HeroListViewModel(
     }
 
     private fun onSuccessLoadAll(hero: Hero) {
-        val oldList: List<HeroPresentation> = _listState.value?.listHero ?: emptyList()
+        val oldList: List<HeroPresentation> = _listState.value.listHero ?: emptyList()
         val newList: List<HeroPresentation> = listOf(hero.toPresentation())
         val currentList = oldList + newList
         _listState.value = _listState.value.copy(listHero = currentList)

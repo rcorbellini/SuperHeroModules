@@ -1,5 +1,6 @@
 package feature.superhero.data
 
+import androidx.room.Room
 import com.google.gson.FieldNamingPolicy
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonSyntaxException
@@ -8,6 +9,8 @@ import com.google.gson.internal.bind.TypeAdapters
 import com.google.gson.stream.JsonReader
 import com.google.gson.stream.JsonToken
 import com.google.gson.stream.JsonWriter
+import feature.superhero.data.cache.SuperHeroDatabase
+import feature.superhero.data.cache.dao.HeroDao
 import feature.superhero.data.remote.services.HeroService
 import feature.superhero.data.repositories.HeroRepositoryImp
 import feature.superhero.domain.repositories.HeroRepository
@@ -18,9 +21,26 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
+import org.koin.android.ext.koin.androidContext
+
+val heroCacheModule = module {
+
+    single {
+        Room
+            .databaseBuilder(androidContext(), SuperHeroDatabase::class.java, "super_hero_db")
+            .build()
+    }
+
+    single { heroDao(db = get()) }
+
+
+}
+
+internal fun heroDao(db: SuperHeroDatabase): HeroDao = db.heroDao()
+
 val heroRemoteModule = module {
     single<HeroRepository> {
-        HeroRepositoryImp(heroService = get())
+        HeroRepositoryImp(heroService = get(), heroDao = get())
     }
     single { provideHeroService(retrofit = get()) }
 

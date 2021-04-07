@@ -1,6 +1,7 @@
 package com.corbellini.superheroapp
 
 import android.app.Application
+import feature.superhero.data.heroCacheModule
 import feature.superhero.domain.heroDomain
 import feature.superhero.presentation.heroPresentation
 import feature.superhero.data.heroRemoteModule
@@ -18,6 +19,7 @@ class SuperHeroApplication : Application() {
             modules(
                 heroPresentation,
                 heroRemoteModule,
+                heroCacheModule,
                 heroDomain,
             )
         }
