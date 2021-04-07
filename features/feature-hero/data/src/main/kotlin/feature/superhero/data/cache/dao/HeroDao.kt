@@ -45,7 +45,7 @@ abstract class HeroDao {
     abstract suspend fun insertBio(entity: BiographyEntity)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    abstract fun insertConnection(entity: ConnectionsEntity)
+    abstract suspend fun insertConnection(entity: ConnectionsEntity)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     abstract suspend fun insertImage(entity: ImageEntity)
