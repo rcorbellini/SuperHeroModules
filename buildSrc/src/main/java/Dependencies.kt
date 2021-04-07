@@ -16,6 +16,7 @@ object Versions {
     val androidx_navigation = "2.3.4"
     val androidx_constraintLayout = "2.0.4"
     val androidx_life_cycle = "2.3.0"
+    val androidx_room = "2.2.6"
     val material = "1.3.0"
     // </editor-fold>
 
@@ -58,6 +59,10 @@ object Deps {
     val androidx_navigation_fragment     = "androidx.navigation:navigation-fragment-ktx:${Versions.androidx_navigation}"
     val androidx_navigation_ui           = "androidx.navigation:navigation-ui-ktx:${Versions.androidx_navigation}"
     val androidx_recyclerview            = "androidx.recyclerview:recyclerview:${Versions.androidx_recyclerview}"
+
+    val androidx_room                    = "androidx.room:room-runtime:${Versions.androidx_room}"
+    val androidx_room_compiler           = "androidx.room:room-compiler:${Versions.androidx_room}"
+    val androidx_roomktx                 = "androidx.room:room-ktx:${Versions.androidx_room}"
     val androidx_appcompat               = "androidx.appcompat:appcompat:${Versions.androidx_appcompat}"
     val androidx_lf_viewmodel            = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.androidx_life_cycle}"
     val androidx_lf_livedata             = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.androidx_life_cycle}"
@@ -80,6 +85,7 @@ object Deps {
 
 
     // <editor-fold desc="testing">
+    val testandroidx_room           = "androidx.room:room-testing:${Versions.androidx_room}"
     val testlib_junit               = "junit:junit:${Versions.junit}"
     val testlib_junitext            = "androidx.test.ext:junit:${Versions.junitext}"
     val testandroidx_rules          = "androidx.test:rules:${Versions.androidx_testing}"
