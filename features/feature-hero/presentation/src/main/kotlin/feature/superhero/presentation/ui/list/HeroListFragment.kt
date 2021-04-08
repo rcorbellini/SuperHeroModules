@@ -27,7 +27,13 @@ class HeroListFragment : Fragment() {
     private lateinit var binding: FragmentHeroListBinding
 
     private val favoritesAdapter = createHeoresAdapter {
-        findNavController().navigate(R.id.action_heroListFragment_to_heroDetailFragment)
+        val action = HeroListFragmentDirections.actionHeroListFragmentToHeroDetailFragment(
+            id = it.id
+        )
+
+
+
+        findNavController().navigate(action)
     }
 
     private val onScrollHitBottomLoadMore = object : RecyclerView.OnScrollListener() {
@@ -47,7 +53,7 @@ class HeroListFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View  {
+    ): View {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_hero_list, container, false)
 

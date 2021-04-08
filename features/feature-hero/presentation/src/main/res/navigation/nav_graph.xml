@@ -7,15 +7,22 @@
     <fragment
         android:id="@+id/heroListFragment"
         android:name="feature.superhero.presentation.ui.list.HeroListFragment"
-        android:label="HeroListFragment" >
+        android:label="HeroListFragment">
         <action
             android:id="@+id/action_heroListFragment_to_heroDetailFragment"
-            app:destination="@id/heroDetailFragment" />
+            app:destination="@id/heroDetailFragment"/>
     </fragment>
     <fragment
         android:id="@+id/heroDetailFragment"
         android:name="feature.superhero.presentation.ui.detail.HeroDetailFragment"
-        android:label="HeroDetailFragment" />
+        android:label="HeroDetailFragment" >
+
+
+    <argument
+        android:name="id"
+        app:argType="integer"
+        android:defaultValue="0" />
+    </fragment>
 
 
 </navigation>
