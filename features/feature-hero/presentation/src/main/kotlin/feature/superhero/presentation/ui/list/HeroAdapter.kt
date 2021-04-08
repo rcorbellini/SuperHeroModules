@@ -17,7 +17,7 @@ internal class HeroViewHolder(
     }
 }
 
-internal inline fun createHeoresAdapter( onClick: (HeroPresentation) -> Unit) =
+internal fun createHeoresAdapter( onClick: (HeroPresentation) -> Unit) =
     adapterOf<HeroPresentation> {
         diff(
             areItemsTheSame = { old, new ->
@@ -30,6 +30,7 @@ internal inline fun createHeoresAdapter( onClick: (HeroPresentation) -> Unit) =
             viewHolder = ::HeroViewHolder,
             onBindViewHolder = { vh, _, heroPresentation ->
                 vh.binding.hero = heroPresentation
+                vh.binding.heroCard.setOnClickListener{onClick(heroPresentation)}
             }
         )
     }

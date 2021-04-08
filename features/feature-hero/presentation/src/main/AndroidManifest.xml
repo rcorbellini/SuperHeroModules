@@ -5,7 +5,7 @@
 
 <application>
     <activity
-        android:name="feature.superhero.presentation.ui.list.HeroListActivity"
+        android:name="feature.superhero.presentation.ui.SuperHeroActivity"
         android:exported="true">
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />

@@ -6,7 +6,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".feature.superhero.presentation.ui.list.HeroListActivity"
+        tools:context=".feature.superhero.presentation.ui.SuperHeroActivity"
         >
 
         <androidx.recyclerview.widget.RecyclerView

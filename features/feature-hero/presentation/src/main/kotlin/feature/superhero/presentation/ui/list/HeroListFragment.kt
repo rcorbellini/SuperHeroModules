@@ -1,12 +1,16 @@
 package feature.superhero.presentation.ui.list
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.corbellini.presentation.R
-import com.corbellini.presentation.databinding.ActivityHeroListBinding
+import com.corbellini.presentation.databinding.FragmentHeroListBinding
 import com.google.android.material.snackbar.Snackbar
 import feature.superhero.presentation.models.HeroPresentation
 import kotlinx.coroutines.flow.collect
@@ -15,15 +19,15 @@ import library.presentation.core.bindScrollListener
 import library.presentation.core.show
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class HeroListActivity : AppCompatActivity() {
+class HeroListFragment : Fragment() {
     // region Members
 
     private val heroListViewModel by viewModel<HeroListViewModel>()
 
-    private lateinit var binding: ActivityHeroListBinding
+    private lateinit var binding: FragmentHeroListBinding
 
     private val favoritesAdapter = createHeoresAdapter {
-        //todo, on click
+        findNavController().navigate(R.id.action_heroListFragment_to_heroDetailFragment)
     }
 
     private val onScrollHitBottomLoadMore = object : RecyclerView.OnScrollListener() {
@@ -39,15 +43,21 @@ class HeroListActivity : AppCompatActivity() {
 
     // region Android API
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View  {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_hero_list)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_hero_list, container, false)
 
         observeHeroListState()
 
         handleTextChanges()
 
         dispatchLoadMore()
+
+        return binding.root
     }
     // endregion
 

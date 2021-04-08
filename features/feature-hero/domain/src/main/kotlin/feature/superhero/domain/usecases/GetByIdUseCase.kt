@@ -6,14 +6,14 @@ import kotlinx.coroutines.flow.Flow
 import library.domain.core.usecases.UseCase
 import library.domain.core.usecases.UseCaseParam
 
-interface GetByIdUseCase : UseCase<Hero, ParamGetById> {
-    override suspend fun execute(params: ParamGetById): Flow<Result<Hero>>
+interface GetByIdUseCase : UseCase<Hero, GetByIdParam> {
+    override suspend fun execute(params: GetByIdParam): Flow<Result<Hero>>
 }
 
 class GetByIdUseCaseImp(private val repository: HeroRepository) : GetByIdUseCase {
-    override suspend fun execute(params: ParamGetById) = repository.getById(id = params.id)
+    override suspend fun execute(params: GetByIdParam) = repository.getById(id = params.id)
 }
 
-class ParamGetById(
+class GetByIdParam(
     val id: Int
 ) : UseCaseParam()

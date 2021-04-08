@@ -1,10 +1,7 @@
 package feature.superhero.data.repositories
 
 import feature.superhero.data.cache.dao.HeroDao
-import feature.superhero.data.cache.entities.HeroEntity
-import feature.superhero.data.cache.entities.HeroFullEntity
 import feature.superhero.data.cache.entities.toCacheEntity
-import feature.superhero.data.cache.entities.toEntity
 import feature.superhero.data.remote.services.HeroService
 import feature.superhero.domain.models.Hero
 import feature.superhero.domain.repositories.HeroRepository
@@ -51,7 +48,7 @@ class HeroRepositoryImp(
         //caching and returning remote
         heroService.getById(id).toModel().run {
             heroDao.insertHeroFull(
-              this.toCacheEntity()
+                this.toCacheEntity()
             )
             return@getAndCache this
         }

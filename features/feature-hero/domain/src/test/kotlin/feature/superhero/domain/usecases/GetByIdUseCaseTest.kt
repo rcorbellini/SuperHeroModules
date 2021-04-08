@@ -38,7 +38,7 @@ class GetByIdUseCaseTest {
         whenever(service.getById(id)).thenReturn(flow{emit(Result.success(hero))})
 
         //act
-        getByIdUseCaseImp.execute(params = ParamGetById(id)).collect { result ->
+        getByIdUseCaseImp.execute(params = GetByIdParam(id)).collect { result ->
 
             //assert
             assertEquals(Result.success(hero), result)
@@ -58,7 +58,7 @@ class GetByIdUseCaseTest {
         ))})
 
         //act
-        getByIdUseCaseImp.execute(params = ParamGetById(id)).collect { result ->
+        getByIdUseCaseImp.execute(params = GetByIdParam(id)).collect { result ->
             //assert
             assertTrue(result.isFailure && result.exceptionOrNull() is RemoteApiExceptions)
         }

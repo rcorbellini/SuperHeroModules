@@ -19,6 +19,8 @@ dependencies {
     implementation Deps.androidx_lf_livedata
     implementation Deps.androidx_appcompat
     implementation Deps.androidx_material
+    implementation Deps.androidx_navigation_fragment
+    implementation Deps.androidx_navigation_ui
 
     testImplementation Deps.testlib_mockito
     testImplementation Deps.testlib_coroutines
