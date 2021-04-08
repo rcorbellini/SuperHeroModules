@@ -20,7 +20,7 @@ class HeroDetailFragment : Fragment() {
 
     private val heroDetailViewModel by viewModel<HeroDetailViewModel>()
 
-    val args: HeroDetailFragmentArgs by navArgs()
+    private val args by navArgs<HeroDetailFragmentArgs>()
 
     private lateinit var binding: FragmentHeroDetailBinding
 
