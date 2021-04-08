@@ -58,6 +58,7 @@ object Deps {
     val androidx_material                = "com.google.android.material:material:${Versions.material}"
     val androidx_navigation_fragment     = "androidx.navigation:navigation-fragment-ktx:${Versions.androidx_navigation}"
     val androidx_navigation_ui           = "androidx.navigation:navigation-ui-ktx:${Versions.androidx_navigation}"
+    val androidx_navigation_safe_args    = "androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.androidx_navigation}"
     val androidx_recyclerview            = "androidx.recyclerview:recyclerview:${Versions.androidx_recyclerview}"
 
     val androidx_room                    = "androidx.room:room-runtime:${Versions.androidx_room}"

@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.navArgs
 import com.corbellini.presentation.R
 import com.corbellini.presentation.databinding.FragmentHeroDetailBinding
 import com.google.android.material.snackbar.Snackbar
@@ -18,6 +19,8 @@ class HeroDetailFragment : Fragment() {
     // region Members
 
     private val heroDetailViewModel by viewModel<HeroDetailViewModel>()
+
+    val args: HeroDetailFragmentArgs by navArgs()
 
     private lateinit var binding: FragmentHeroDetailBinding
 
@@ -36,7 +39,7 @@ class HeroDetailFragment : Fragment() {
         observeHeroListState()
 
 
-        dispatchLoadById(1)
+        dispatchLoadById(args.id)
 
         return binding.root
     }
