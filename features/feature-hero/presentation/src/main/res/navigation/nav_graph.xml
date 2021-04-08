@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/heroListFragment">
+
+    <fragment
+        android:id="@+id/heroListFragment"
+        android:name="feature.superhero.presentation.ui.list.HeroListFragment"
+        android:label="HeroListFragment" >
+        <action
+            android:id="@+id/action_heroListFragment_to_heroDetailFragment"
+            app:destination="@id/heroDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/heroDetailFragment"
+        android:name="feature.superhero.presentation.ui.detail.HeroDetailFragment"
+        android:label="HeroDetailFragment" />
+
+
+</navigation>
