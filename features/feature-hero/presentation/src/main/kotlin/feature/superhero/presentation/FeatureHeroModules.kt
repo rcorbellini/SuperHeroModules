@@ -9,7 +9,8 @@ val heroPresentation = module {
 
     viewModel {
         HeroListViewModel(
-            loadAllPagedUseCase = get()
+            loadAllPagedUseCase = get(),
+            laodByNameUseCase = get()
         )
     }
 

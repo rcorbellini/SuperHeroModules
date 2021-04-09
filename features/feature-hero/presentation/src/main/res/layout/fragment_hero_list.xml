@@ -9,15 +9,27 @@
         tools:context=".feature.superhero.presentation.ui.SuperHeroActivity"
         >
 
+        <EditText
+            android:id="@+id/search_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:inputType="text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:padding="16dp" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/list_hero_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:orientation="vertical"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@id/search_edit_text"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/search_edit_text"
+            app:layout_constraintBottom_toBottomOf="parent"
             tools:itemCount="2"
             tools:listitem="@layout/item_hero" />
 

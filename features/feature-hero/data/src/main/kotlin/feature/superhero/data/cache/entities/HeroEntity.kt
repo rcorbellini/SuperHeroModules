@@ -7,6 +7,5 @@ import androidx.room.PrimaryKey
 data class HeroEntity(
     @PrimaryKey
     val id: Int,
-    val response: String,
     val name: String,
 )

@@ -2,7 +2,6 @@ package feature.superhero.domain.models
 
 data class Hero (
 	val id : Int,
-	val response : String,
 	val name : String,
 	val powerstats : Powerstats,
 	val biography : Biography,
