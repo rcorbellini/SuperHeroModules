@@ -40,7 +40,6 @@ data class HeroFullEntity(
 
     fun toModel() = Hero(
         id = hero.id,
-        response = hero.response,
         name = hero.name,
         powerstats = powerstats.toModel(),
         biography = biography.toModel(),
@@ -52,7 +51,7 @@ data class HeroFullEntity(
 }
 
 fun Hero.toCacheEntity() = HeroFullEntity(
-    hero = HeroEntity(id = id, response = response, name= name),
+    hero = HeroEntity(id = id, name= name),
     powerstats = powerstats.toEntity().copy(heroId = id),
     biography = biography.toEntity().copy(heroId = id),
     appearance = appearance.toEntity().copy(heroId = id),

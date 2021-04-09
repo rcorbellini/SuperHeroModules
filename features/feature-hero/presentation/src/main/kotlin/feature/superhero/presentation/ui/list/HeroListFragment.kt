@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.widget.doOnTextChanged
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
@@ -30,9 +31,6 @@ class HeroListFragment : Fragment() {
         val action = HeroListFragmentDirections.actionHeroListFragmentToHeroDetailFragment(
             id = it.id
         )
-
-
-
         findNavController().navigate(action)
     }
 
@@ -73,14 +71,12 @@ class HeroListFragment : Fragment() {
     }
 
     private fun handleTextChanges() {
-        /*binding.searchEditText.doOnTextChanged { text, _, _, _ ->
-            text.let { query ->
-                if (query.length >= TRESHOLD) {
-                    binding.dashboardLayout.transitionToEnd()
-                    heroListViewModel.dispatchEvent(HeroListEvent.Search( query))
-                }
+        binding.searchEditText.doOnTextChanged { text, _, _, _ ->
+            text?.let { query ->
+                    heroListViewModel.dispatchEvent(HeroListEvent.Search( query.toString()))
+
             }
-        }*/
+        }
     }
 
     private fun observeHeroListState() {
@@ -107,16 +103,16 @@ class HeroListFragment : Fragment() {
     }
 
     private fun handleContent(state: HeroListState) {
-        state.listHero.let { listHeroes ->
-            if (listHeroes.isNotEmpty()) {
-                binding.listHeroRecyclerView.bindScrollListener(
-                    state.complete,
-                    onScrollHitBottomLoadMore
-                )
-                handleListHeroes(listHeroes)
-            } else {
-                handleNoListHero()
-            }
+        val isSearching = state.listSearchHeroes.isNotEmpty()
+        val listHeroes = if(isSearching) state.listSearchHeroes else state.listHeroes
+        if (listHeroes.isNotEmpty()) {
+            binding.listHeroRecyclerView.bindScrollListener(
+                state.complete,
+                onScrollHitBottomLoadMore
+            )
+            handleListHeroes(listHeroes)
+        } else {
+            handleNoListHero()
         }
     }
 

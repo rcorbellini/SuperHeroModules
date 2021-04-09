@@ -1,12 +1,9 @@
 package feature.superhero.presentation.models
 
 import feature.superhero.domain.models.Hero
-import feature.superhero.presentation.models.BiographyPresentation
-import feature.superhero.presentation.models.toPresentation
 
 data class HeroPresentation(
     val id: Int,
-    val response: String,
     val name: String,
     val powerstats: PowerstatsPresentation,
     val biography: BiographyPresentation,
@@ -17,7 +14,6 @@ data class HeroPresentation(
 ) {
     fun toModel() = Hero(
         id = id,
-        response = response,
         name = name,
         powerstats = powerstats.toModel(),
         biography = biography.toModel(),
@@ -30,7 +26,6 @@ data class HeroPresentation(
 
 fun Hero.toPresentation() = HeroPresentation(
     id = id,
-    response = response,
     name = name,
     powerstats = powerstats.toPresentation(),
     biography = biography.toPresentation(),

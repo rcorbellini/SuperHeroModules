@@ -4,7 +4,6 @@ import feature.superhero.domain.models.Hero
 
 data class HeroEntity(
     val id: Int,
-    val response: String,
     val name: String,
     val powerstats: PowerstatsEntity,
     val biography: BiographyEntity,
@@ -16,7 +15,6 @@ data class HeroEntity(
 
     fun toModel() = Hero(
         id = id,
-        response = response,
         name = name,
         powerstats = powerstats.toModel(),
         biography = biography.toModel(),
@@ -29,7 +27,6 @@ data class HeroEntity(
 
 fun Hero.toEntity() = HeroEntity(
     id = id,
-    response = response,
     name = name,
     powerstats = powerstats.toEntity(),
     biography = biography.toEntity(),
@@ -37,4 +34,8 @@ fun Hero.toEntity() = HeroEntity(
     work = work.toEntity(),
     connections = connections.toEntity(),
     image = image.toEntity(),
+)
+
+data class SearchWrapper(
+    val results : List<HeroEntity>?
 )

@@ -39,6 +39,19 @@ class HeroRepositoryImp(
             }
         }
 
+    override suspend fun loadByName(query: String) =
+        flow<Result<List<Hero>>> {
+            try {
+                val heroes =
+                    heroService.search(query = query).results?.map { it.toModel() } ?: emptyList()
+                emit(Result.success(heroes))
+            } catch (e: Exception) {
+                //TODO make a better error handler (by instance type)
+                e.printStackTrace()
+                emit(Result.failure(RemoteApiExceptions()))
+            }
+        }
+
     private suspend fun getAndCache(id: Int): Hero {
         //return cached
         heroDao.getHero(id = id)?.run {
