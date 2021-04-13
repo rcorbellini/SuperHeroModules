@@ -56,7 +56,7 @@ class HeroListFragment : Fragment() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_hero_list, container, false)
         binding.listHeroRecyclerView.layoutManager = StaggeredGridLayoutManager(
-            2,
+            3,
             StaggeredGridLayoutManager.VERTICAL
         )
 
