@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.corbellini.presentation.R
 import com.corbellini.presentation.databinding.FragmentHeroListBinding
 import com.google.android.material.snackbar.Snackbar
@@ -27,7 +28,7 @@ class HeroListFragment : Fragment() {
 
     private lateinit var binding: FragmentHeroListBinding
 
-    private val favoritesAdapter = createHeoresAdapter {
+    private val heroesAdapter = createHeoresAdapter {
         val action = HeroListFragmentDirections.actionHeroListFragmentToHeroDetailFragment(
             id = it.id
         )
@@ -54,6 +55,10 @@ class HeroListFragment : Fragment() {
     ): View {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_hero_list, container, false)
+        binding.listHeroRecyclerView.layoutManager = StaggeredGridLayoutManager(
+            2,
+            StaggeredGridLayoutManager.VERTICAL
+        )
 
         observeHeroListState()
 
@@ -73,7 +78,7 @@ class HeroListFragment : Fragment() {
     private fun handleTextChanges() {
         binding.searchEditText.doOnTextChanged { text, _, _, _ ->
             text?.let { query ->
-                    heroListViewModel.dispatchEvent(HeroListEvent.Search( query.toString()))
+                heroListViewModel.dispatchEvent(HeroListEvent.Search(query.toString()))
 
             }
         }
@@ -104,7 +109,7 @@ class HeroListFragment : Fragment() {
 
     private fun handleContent(state: HeroListState) {
         val isSearching = state.listSearchHeroes.isNotEmpty()
-        val listHeroes = if(isSearching) state.listSearchHeroes else state.listHeroes
+        val listHeroes = if (isSearching) state.listSearchHeroes else state.listHeroes
         if (listHeroes.isNotEmpty()) {
             binding.listHeroRecyclerView.bindScrollListener(
                 state.complete,
@@ -121,8 +126,8 @@ class HeroListFragment : Fragment() {
         binding.listHeroRecyclerView.show()
         binding.listHeroRecyclerView.apply {
             //to avoid 'blink' and scroll to the top
-            adapter ?: run { adapter = favoritesAdapter }
-            favoritesAdapter.submitList(favorites)
+            adapter ?: run { adapter = heroesAdapter }
+            heroesAdapter.submitList(favorites)
         }
     }
 

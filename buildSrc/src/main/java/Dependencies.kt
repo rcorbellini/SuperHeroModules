@@ -22,7 +22,7 @@ object Versions {
 
     val koin = "2.2.2"
     val log_interceptor = "4.2.1"
-
+    val glide = "4.12.0"
     val retrofit = "2.9.0"
 
     // <editor-fold desc="testing">
@@ -60,6 +60,9 @@ object Deps {
     val androidx_navigation_ui           = "androidx.navigation:navigation-ui-ktx:${Versions.androidx_navigation}"
     val androidx_navigation_safe_args    = "androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.androidx_navigation}"
     val androidx_recyclerview            = "androidx.recyclerview:recyclerview:${Versions.androidx_recyclerview}"
+
+    val glide                            = "com.github.bumptech.glide:glide:${Versions.glide}"
+    val glide_compiler                   = "com.github.bumptech.glide:compiler:${Versions.glide}"
 
     val androidx_room                    = "androidx.room:room-runtime:${Versions.androidx_room}"
     val androidx_room_compiler           = "androidx.room:room-compiler:${Versions.androidx_room}"
