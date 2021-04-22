@@ -37,7 +37,7 @@ object Versions {
 
     // <editor-fold desc="tools">
     val kotlin = "1.4.31"
-    val gradleandroid = "7.0.0-alpha10"
+    val gradleandroid = "7.0.0-alpha14"
     val gradleversions = "0.38.0"
     // </editor-fold>
 
